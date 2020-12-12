@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing.Dynamic.Json", "Testing.Dynamic.Json\Testing.Dynamic.Json.csproj", "{36C153F0-9159-4B1F-AAAC-6996F75117F0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing.Dynamic.Json.Test", "Testing.Dynamic.Json.Test\Testing.Dynamic.Json.Test.csproj", "{645419CA-255E-47D8-8DE7-F74871D433EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36C153F0-9159-4B1F-AAAC-6996F75117F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36C153F0-9159-4B1F-AAAC-6996F75117F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36C153F0-9159-4B1F-AAAC-6996F75117F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36C153F0-9159-4B1F-AAAC-6996F75117F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{645419CA-255E-47D8-8DE7-F74871D433EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{645419CA-255E-47D8-8DE7-F74871D433EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{645419CA-255E-47D8-8DE7-F74871D433EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{645419CA-255E-47D8-8DE7-F74871D433EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7B43727-A594-440E-BB58-05D54E6AD6F3}
+	EndGlobalSection
+EndGlobal
