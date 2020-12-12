@@ -1,8 +1,33 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Testing.Dynamic.Json</PackageId>
+    <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
     <RootNamespace>Testing.Dynamic</RootNamespace>
+    <LangVersion>9.0</LangVersion>
+
+    <Description>Provides dynamicly access to property/member of Json object deserialized by System.Text.Json. Usage for unit testing purpose only.</Description>
+    <Authors>Tho Ho; NetLah</Authors>
+    <PackageTags>Testing;xunit;Json;Dynamic</PackageTags>
+    <PackageProjectUrl>https://github.com/NetLah/Dynamic.Json</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReleaseNotes>https://github.com/NetLah/Dynamic.Json/releases</PackageReleaseNotes>
+
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+  </ItemGroup>
 
 </Project>
