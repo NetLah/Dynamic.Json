@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <FrameworkVersion>5.0.0</FrameworkVersion>
+    <MinVerMinimumMajorMinor>0.1</MinVerMinimumMajorMinor>
+    <MinVerTagPrefix>v</MinVerTagPrefix>
   </PropertyGroup>
 
   <ItemGroup>
