@@ -5,7 +5,7 @@ $packOutputCopy = './nuget'
 
 New-Item -ItemType Directory -Force -Path $packOutputCopy
 
-#dotnet tool restore
+dotnet tool restore
 
 dotnet build -c Release --nologo
 
