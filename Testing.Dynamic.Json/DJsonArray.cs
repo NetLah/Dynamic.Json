@@ -10,7 +10,7 @@ namespace Testing.Dynamic
     {
         private readonly List<object> _list = new();
 
-        internal DJsonArray(List<object> list = null) => _list = list ?? new();
+        internal DJsonArray(IEnumerable<object> list = null) => _list = list?.ToList() ?? new();
 
         public override int CountMembers => _list.Count;
 
@@ -23,13 +23,5 @@ namespace Testing.Dynamic
         }
 
         public override object this[int index] => index >= 0 && index < _list.Count ? _list[index] : null;
-
-        internal static DJsonArray Create(object[] values)
-        {
-            var result = new DJsonArray();
-            if (values?.Any() == true)
-                result.InnerList.AddRange(values);
-            return result;
-        }
     }
 }

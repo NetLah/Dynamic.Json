@@ -29,6 +29,6 @@ namespace Testing.Dynamic
         }
 
         public static DJsonArray ConvertArray(JsonElement jsonElement)
-            => DJsonArray.Create(jsonElement.EnumerateArray().Select(e => Convert(e)).ToArray());
+            => new DJsonArray(jsonElement.EnumerateArray().Select(e => Convert(e)));
     }
 }
