@@ -2,33 +2,24 @@
 
   <PropertyGroup>
     <PackageId>Testing.Dynamic.Json</PackageId>
-    <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
-    <RootNamespace>Testing.Dynamic</RootNamespace>
-    <LangVersion>9.0</LangVersion>
-
+    <PackageTags>testing;json;dynamic;xunit</PackageTags>
+    <TargetFrameworks>net6.0;net5.0;netstandard2.0</TargetFrameworks>
     <Description>Provides dynamicly access to property/member of Json object deserialized by System.Text.Json. Usage for unit testing purpose only.</Description>
-    <Authors>Tho Ho; NetLah</Authors>
-    <PackageTags>Testing;xunit;Json;Dynamic</PackageTags>
-    <PackageProjectUrl>https://github.com/NetLah/Dynamic.Json</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReleaseNotes>https://github.com/NetLah/Dynamic.Json/releases</PackageReleaseNotes>
-
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>../key.snk</AssemblyOriginatorKeyFile>
-    <GenerateDocumentationFile>false</GenerateDocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <ContinuousIntegrationBuild>True</ContinuousIntegrationBuild>
+    <AssemblyOriginatorKeyFile>../NetLah.snk</AssemblyOriginatorKeyFile>
+    <RootNamespace>Testing.Dynamic</RootNamespace>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Text.Json" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+    <PackageReference Include="NetLah.Abstractions" />
+    <PackageReference Include="System.Text.Json" Condition="'$(TargetFramework)' != 'net5.0' And '$(TargetFramework)' != 'net6.0'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
