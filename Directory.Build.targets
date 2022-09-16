@@ -130,7 +130,7 @@
     <PackageReference Update="System.Text.Encoding.CodePages" Version="$(FrameworkVersion)" />
     <PackageReference Update="System.Text.Json" Condition="'$(TargetFramework)' != 'net6.0' And '$(TargetFramework)' != 'net7.0'" Version="5.*" />
     <PackageReference Update="System.Text.Json" Condition="'$(TargetFramework)' == 'net6.0' Or '$(TargetFramework)' == 'net7.0'" Version="$(FrameworkBaselineVersion)" />
-    
+
     <!--microsoft asp.net core-->
     <PackageReference Update="Microsoft.AspNetCore.Authentication.Facebook" Version="$(FrameworkVersion)" />
     <PackageReference Update="Microsoft.AspNetCore.Authentication.Google" Version="$(FrameworkVersion)" />
