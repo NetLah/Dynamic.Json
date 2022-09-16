@@ -13,7 +13,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NetLah.Abstractions" />
     <PackageReference Include="System.Text.Json" Condition="'$(TargetFramework)' != 'net5.0' And '$(TargetFramework)' != 'net6.0'" />
   </ItemGroup>
 
