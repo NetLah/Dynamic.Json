@@ -3,7 +3,7 @@
   <PropertyGroup>
     <PackageId>Testing.Dynamic.Json</PackageId>
     <PackageTags>testing;json;dynamic;xunit</PackageTags>
-    <TargetFrameworks>net6.0;net5.0;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net7.0;net6.0;netstandard2.0</TargetFrameworks>
     <Description>Provides dynamicly access to property/member of Json object deserialized by System.Text.Json. Usage for unit testing purpose only.</Description>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>../NetLah.snk</AssemblyOriginatorKeyFile>
