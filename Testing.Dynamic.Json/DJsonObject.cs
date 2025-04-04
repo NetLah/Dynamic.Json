@@ -8,7 +8,7 @@ namespace Testing.Dynamic
     [JsonConverter(typeof(DJsonObjectJsonConverter))]
     public class DJsonObject : DJson
     {
-        private readonly Dictionary<string, object> _dict = new();
+        private readonly Dictionary<string, object> _dict = [];
         private readonly Dictionary<string, object> _dict2 = new(StringComparer.OrdinalIgnoreCase);
 
         internal DJsonObject() { }
@@ -17,18 +17,9 @@ namespace Testing.Dynamic
 
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
-            if (binder.IgnoreCase && _dict2.TryGetValue(binder.Name, out var value1))
-            {
-                result = value1;
-            }
-            else if (!binder.IgnoreCase && _dict.TryGetValue(binder.Name, out var value2))
-            {
-                result = value2;
-            }
-            else
-            {
-                result = null;
-            }
+            result = binder.IgnoreCase && _dict2.TryGetValue(binder.Name, out var value1)
+                ? value1
+                : !binder.IgnoreCase && _dict.TryGetValue(binder.Name, out var value2) ? value2 : null;
             return true;
         }
 

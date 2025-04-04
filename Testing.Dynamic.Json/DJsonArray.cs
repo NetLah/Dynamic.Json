@@ -7,9 +7,9 @@ namespace Testing.Dynamic
     [JsonConverter(typeof(DJsonArrayJsonConverter))]
     public class DJsonArray : DJson
     {
-        private readonly List<object> _list = new();
+        private readonly List<object> _list = [];
 
-        internal DJsonArray(IEnumerable<object> list = null) => _list = list?.ToList() ?? new();
+        internal DJsonArray(IEnumerable<object> list = null) => _list = list?.ToList() ?? [];
 
         public override int CountMembers => _list.Count;
 
