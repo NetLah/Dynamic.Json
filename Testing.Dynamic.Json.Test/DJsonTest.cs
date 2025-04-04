@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using Xunit;
 
 namespace Testing.Dynamic.Test
@@ -79,6 +80,71 @@ namespace Testing.Dynamic.Test
             Assert.Equal("[\"425-000-1212\",15]", JsonSerializer.Serialize(dyn[1]));
             Assert.Equal("{\"grades\":[90,80,100,75]}", JsonSerializer.Serialize(dyn[2]));
             Assert.Equal("null", JsonSerializer.Serialize((object)dyn[3]));
+        }
+
+
+        [Fact]
+        public void TestDeserializeJsonNode()
+        {
+            var dynJson = JsonNode.Parse(json)!;
+
+            AssertJsonNodeDynamic(dynJson);
+
+            AssertJsonNode(dynJson);
+        }
+
+        private static void AssertJsonNodeDynamic(object dynJson)
+        {
+            dynamic dyn = dynJson;
+
+            Assert.Equal(3, dyn.Count);
+            //Assert.Null(dyn[3]);
+            var gradeObj = dyn[2];
+            Assert.NotNull(gradeObj);
+            Assert.Null(gradeObj["Dontknow"]);
+
+            var grades = gradeObj["grades"];
+            Assert.NotNull(grades);
+            Assert.Equal(90, (int)grades[0]);
+            Assert.Equal(80, (int)grades[1]);
+            Assert.Equal(100, (int)grades[2]);
+            Assert.Equal(75, (int)grades[3]);
+
+            Assert.Equal("[{\"name\":\"John\"},[\"425-000-1212\",15],{\"grades\":[90,80,100,75]}]", JsonSerializer.Serialize(dyn));
+            Assert.Equal("{\"name\":\"John\"}", JsonSerializer.Serialize(dyn[0]));
+            Assert.Equal("[\"425-000-1212\",15]", JsonSerializer.Serialize(dyn[1]));
+            Assert.Equal("{\"grades\":[90,80,100,75]}", JsonSerializer.Serialize(dyn[2]));
+            //Assert.Equal("null", JsonSerializer.Serialize((object)dyn[3]));
+        }
+
+        private static void AssertJsonNode(JsonNode dynJson)
+        {
+            var arr = (JsonArray)dynJson;
+            Assert.Equal(3, arr.Count);
+            //Assert.Null(dynJson[3]);
+            var gradeObj = dynJson[2];
+            Assert.NotNull(gradeObj);
+            Assert.Null(gradeObj["Dontknow"]);
+
+            var grades = (JsonArray)gradeObj["grades"];
+            Assert.NotNull(grades);
+
+            var obj90L = grades[0];
+            Assert.NotEqual(90, obj90L);
+            Assert.Equal(90, (int)(long)obj90L);
+            //Assert.Equal(90, Convert.ToInt32(obj90L));
+            //Assert.Equal(90, Convert.ToInt64(obj90L));
+
+            Assert.NotStrictEqual(90, grades[0]);
+            Assert.NotStrictEqual(80, grades[1]);
+            Assert.NotStrictEqual(100, grades[2]);
+            Assert.NotStrictEqual(75, grades[3]);
+
+            Assert.Equal("[{\"name\":\"John\"},[\"425-000-1212\",15],{\"grades\":[90,80,100,75]}]", JsonSerializer.Serialize(dynJson));
+            Assert.Equal("{\"name\":\"John\"}", JsonSerializer.Serialize(dynJson[0]));
+            Assert.Equal("[\"425-000-1212\",15]", JsonSerializer.Serialize(dynJson[1]));
+            Assert.Equal("{\"grades\":[90,80,100,75]}", JsonSerializer.Serialize(dynJson[2]));
+            //Assert.Equal("null", JsonSerializer.Serialize(dynJson[3]));
         }
     }
 }
